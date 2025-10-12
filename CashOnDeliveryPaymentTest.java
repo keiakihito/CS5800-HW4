@@ -8,24 +8,24 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Test for OnlinePaymentNotification with Dependency Injection
+ * Red bar test for CashOnDeliveryPaymentNotification with Dependency Injection
  * Demonstrates Bridge pattern: different channels can be injected
  */
-class OnlinePaymentNotificationTest {
+class CashOnDeliveryPaymentTest {
 
     @Test
     void testSendNotification_WithEmailChannel() {
         // Given - DI with EmailChannel
         NotificationChannel channel = new EmailChannel();
-        OnlinePaymentNotification notification = new OnlinePaymentNotification(channel);
-        String message = "Payment received";
+        CashOnDeliveryPaymentNotification notification = new CashOnDeliveryPaymentNotification(channel);
+        String message = "Your order is out for delivery";
 
         // When
         String result = notification.notifyCustomer(message);
 
         // Then
         assertNotNull(result);
-        assertTrue(result.contains("Online Payment"));
+        assertTrue(result.contains("Cash on Delivery"));
         assertTrue(result.contains("Email"));
     }
 
@@ -33,15 +33,15 @@ class OnlinePaymentNotificationTest {
     void testSendNotification_WithSmsChannel() {
         // Given - DI with SmsChannel
         NotificationChannel channel = new SmsChannel();
-        OnlinePaymentNotification notification = new OnlinePaymentNotification(channel);
-        String message = "Payment received";
+        CashOnDeliveryPaymentNotification notification = new CashOnDeliveryPaymentNotification(channel);
+        String message = "Your order is out for delivery";
 
         // When
         String result = notification.notifyCustomer(message);
 
         // Then
         assertNotNull(result);
-        assertTrue(result.contains("Online Payment"));
+        assertTrue(result.contains("Cash on Delivery"));
         assertTrue(result.contains("SMS"));
     }
 
@@ -49,15 +49,15 @@ class OnlinePaymentNotificationTest {
     void testSendNotification_WithPushChannel() {
         // Given - DI with PushChannel
         NotificationChannel channel = new PushChannel();
-        OnlinePaymentNotification notification = new OnlinePaymentNotification(channel);
-        String message = "Payment received";
+        CashOnDeliveryPaymentNotification notification = new CashOnDeliveryPaymentNotification(channel);
+        String message = "Your order is out for delivery";
 
         // When
         String result = notification.notifyCustomer(message);
 
         // Then
         assertNotNull(result);
-        assertTrue(result.contains("Online Payment"));
+        assertTrue(result.contains("Cash on Delivery"));
         assertTrue(result.contains("Push"));
     }
 }
