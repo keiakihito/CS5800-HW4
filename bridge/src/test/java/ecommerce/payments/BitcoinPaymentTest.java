@@ -8,24 +8,24 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Unit test for CashOnDeliveryPayment with Dependency Injection
+ * Unit test for BitcoinPayment with Dependency Injection
  * Demonstrates Bridge pattern: different channels can be injected
  */
-class CashOnDeliveryPaymentTest {
+class BitcoinPaymentTest {
 
     @Test
     void testSendNotification_WithEmailChannel() {
         // Given - DI with EmailChannel
         NotificationChannel channel = new EmailChannel();
-        CashOnDeliveryPayment notification = new CashOnDeliveryPayment(channel);
-        String message = "Your order is out for delivery";
+        BitcoinPayment notification = new BitcoinPayment(channel);
+        String message = "Bitcoin payment confirmed";
 
         // When
         String result = notification.notifyCustomer(message);
 
         // Then
         assertNotNull(result);
-        assertTrue(result.contains("Cash on Delivery"));
+        assertTrue(result.contains("Bitcoin"));
         assertTrue(result.contains("Email"));
     }
 
@@ -33,15 +33,15 @@ class CashOnDeliveryPaymentTest {
     void testSendNotification_WithSmsChannel() {
         // Given - DI with SmsChannel
         NotificationChannel channel = new SmsChannel();
-        CashOnDeliveryPayment notification = new CashOnDeliveryPayment(channel);
-        String message = "Your order is out for delivery";
+        BitcoinPayment notification = new BitcoinPayment(channel);
+        String message = "Bitcoin payment confirmed";
 
         // When
         String result = notification.notifyCustomer(message);
 
         // Then
         assertNotNull(result);
-        assertTrue(result.contains("Cash on Delivery"));
+        assertTrue(result.contains("Bitcoin"));
         assertTrue(result.contains("SMS"));
     }
 
@@ -49,15 +49,15 @@ class CashOnDeliveryPaymentTest {
     void testSendNotification_WithPushChannel() {
         // Given - DI with PushChannel
         NotificationChannel channel = new PushChannel();
-        CashOnDeliveryPayment notification = new CashOnDeliveryPayment(channel);
-        String message = "Your order is out for delivery";
+        BitcoinPayment notification = new BitcoinPayment(channel);
+        String message = "Bitcoin payment confirmed";
 
         // When
         String result = notification.notifyCustomer(message);
 
         // Then
         assertNotNull(result);
-        assertTrue(result.contains("Cash on Delivery"));
+        assertTrue(result.contains("Bitcoin"));
         assertTrue(result.contains("Push"));
     }
 }
