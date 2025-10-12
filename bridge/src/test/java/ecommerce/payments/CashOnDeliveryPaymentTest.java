@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Red bar test for CashOnDeliveryPaymentNotification with Dependency Injection
+ * Red bar test for CashOnDeliveryPayment with Dependency Injection
  * Demonstrates Bridge pattern: different channels can be injected
  */
 class CashOnDeliveryPaymentTest {
@@ -17,7 +17,7 @@ class CashOnDeliveryPaymentTest {
     void testSendNotification_WithEmailChannel() {
         // Given - DI with EmailChannel
         NotificationChannel channel = new EmailChannel();
-        CashOnDeliveryPaymentNotification notification = new CashOnDeliveryPaymentNotification(channel);
+        CashOnDeliveryPayment notification = new CashOnDeliveryPayment(channel);
         String message = "Your order is out for delivery";
 
         // When
@@ -33,7 +33,7 @@ class CashOnDeliveryPaymentTest {
     void testSendNotification_WithSmsChannel() {
         // Given - DI with SmsChannel
         NotificationChannel channel = new SmsChannel();
-        CashOnDeliveryPaymentNotification notification = new CashOnDeliveryPaymentNotification(channel);
+        CashOnDeliveryPayment notification = new CashOnDeliveryPayment(channel);
         String message = "Your order is out for delivery";
 
         // When
@@ -49,7 +49,7 @@ class CashOnDeliveryPaymentTest {
     void testSendNotification_WithPushChannel() {
         // Given - DI with PushChannel
         NotificationChannel channel = new PushChannel();
-        CashOnDeliveryPaymentNotification notification = new CashOnDeliveryPaymentNotification(channel);
+        CashOnDeliveryPayment notification = new CashOnDeliveryPayment(channel);
         String message = "Your order is out for delivery";
 
         // When
