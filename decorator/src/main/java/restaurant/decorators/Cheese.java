@@ -1,8 +1,20 @@
-// package restaurant.decorators;
+package restaurant.decorators;
 
-// /**
-//  * Concrete decorator: Adds cheese topping to a food item.
-//  */
-// public class Cheese extends ToppingDecorator {
+import restaurant.components.FoodItem;
 
-// }
+/**
+ * Concrete decorator: Adds cheese topping to a food item.
+ */
+public class Cheese extends ToppingDecorator {
+    public Cheese(FoodItem foodItem) {
+        super(foodItem);
+    }
+    @Override
+    public double getCost() {
+        return 0.00; 
+    }
+    @Override
+    public String getDescription() {
+        return "";
+    }
+}
