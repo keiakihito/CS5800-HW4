@@ -1,6 +1,6 @@
-package restaurant.toppings;
+package restaurant.decorators;
 
-import restaurant.FoodItem;
+import restaurant.components.FoodItem;
 
 /**
  * Abstract decorator class for toppings.

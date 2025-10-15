@@ -1,6 +1,6 @@
 package restaurant.order;
 
-import restaurant.FoodItem;
+import restaurant.components.FoodItem;
 
 /**
  * Represents a customer's order.

@@ -1,6 +1,9 @@
 package restaurant.fooditems;
 
 import org.junit.jupiter.api.Test;
+
+import restaurant.components.Burger;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
