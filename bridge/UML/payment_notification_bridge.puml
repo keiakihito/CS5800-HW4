@@ -1,0 +1,68 @@
+@startuml E-Commerce Payment Notification Bridge Pattern
+
+' Abstraction
+abstract class PaymentNotification {
+  -channel: NotificationChannel
+  +PaymentNotification(channel: NotificationChannel)
+  +notifyCustomer(message: String): String {abstract}
+  +getChannel(): NotificationChannel
+}
+
+' Refined Abstractions
+class OnlinePaymentNotification {
+  +OnlinePaymentNotification(channel: NotificationChannel)
+  +notifyCustomer(message: String): String
+}
+
+class CashOnDeliveryPayment {
+  +CashOnDeliveryPayment(channel: NotificationChannel)
+  +notifyCustomer(message: String): String
+}
+
+class BitcoinPayment {
+  +BitcoinPayment(channel: NotificationChannel)
+  +notifyCustomer(message: String): String
+}
+
+' Implementor
+interface NotificationChannel {
+  +sendNotification(message: String): String
+}
+
+' Concrete Implementors
+class EmailChannel {
+  +sendNotification(message: String): String
+}
+
+class SmsChannel {
+  +sendNotification(message: String): String
+}
+
+class PushChannel {
+  +sendNotification(message: String): String
+}
+
+' Relationships
+PaymentNotification <|-- OnlinePaymentNotification
+PaymentNotification <|-- CashOnDeliveryPayment
+PaymentNotification <|-- BitcoinPayment
+
+NotificationChannel <|.. EmailChannel
+NotificationChannel <|.. SmsChannel
+NotificationChannel <|.. PushChannel
+
+PaymentNotification o--> NotificationChannel : bridge
+
+note right of PaymentNotification
+  Abstraction (Function side)
+  Uses channel to send notifications
+end note
+
+note right of NotificationChannel
+  Implementor (Implementation side)
+  Defines how notifications are sent
+end note
+
+note "Bridge Pattern:\nSeparates payment types from\nnotification channels, allowing\nthem to vary independently" as N1
+
+@enduml

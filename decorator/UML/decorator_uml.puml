@@ -1,0 +1,84 @@
+@startuml Restaurant Decorator Pattern
+
+' Interface
+interface FoodItem {
+  +getCost(): double
+  +getDescription(): String
+}
+
+' Concrete Components (Base Food Items)
+class Burger {
+  +getCost(): double
+  +getDescription(): String
+}
+
+class Fries {
+  +getCost(): double
+  +getDescription(): String
+}
+
+class HotDog {
+  +getCost(): double
+  +getDescription(): String
+}
+
+' Abstract Decorator
+abstract class ToppingDecorator {
+  #foodItem: FoodItem
+  +ToppingDecorator(foodItem: FoodItem)
+  +getCost(): double
+  +getDescription(): String
+}
+
+' Concrete Decorators (Toppings)
+class Ketchup {
+  +Ketchup(foodItem: FoodItem)
+  +getCost(): double
+  +getDescription(): String
+}
+
+class Cheese {
+  +Cheese(foodItem: FoodItem)
+  +getCost(): double
+  +getDescription(): String
+}
+
+class Onions {
+  +Onions(foodItem: FoodItem)
+  +getCost(): double
+  +getDescription(): String
+}
+
+' Order Management
+class Order {
+  -items: List<FoodItem>
+  +addItem(item: FoodItem): void
+  +getTotal(): double
+  +getItems(): List<FoodItem>
+}
+
+' Loyalty System
+class LoyaltyDiscount {
+  -loyaltyLevel: String
+  -discountRate: double
+  +LoyaltyDiscount(level: String)
+  +applyDiscount(amount: double): double
+  +getDiscountRate(): double
+}
+
+' Relationships
+FoodItem <|.. Burger
+FoodItem <|.. Fries
+FoodItem <|.. HotDog
+FoodItem <|.. ToppingDecorator
+
+ToppingDecorator <|-- Ketchup
+ToppingDecorator <|-- Cheese
+ToppingDecorator <|-- Onions
+
+ToppingDecorator o--> FoodItem : wraps
+
+Order o--> FoodItem : contains
+Order ..> LoyaltyDiscount : uses
+
+@enduml
