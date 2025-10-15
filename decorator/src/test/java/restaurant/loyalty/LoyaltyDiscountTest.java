@@ -51,6 +51,6 @@ public class LoyaltyDiscountTest {
     @Test
     public void testGetTier() {
         LoyaltyDiscount silver = new LoyaltyDiscount("Silver");
-        assertEquals("Silver", silver.getTier());
+        assertEquals("Silver", silver.getLoyaltyLevel());
     }
 }
