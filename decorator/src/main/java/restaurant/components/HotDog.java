@@ -6,11 +6,11 @@ package restaurant.components;
 public class HotDog implements FoodItem {
     @Override
     public double getCost() {
-        return 0.00;
+        return 2.00;
     }
 
     @Override
     public String getDescription() {
-        return "";
+        return "HotDog";
     }
 }
