@@ -14,7 +14,7 @@ public class BurgerTest {
     @Test
     public void testBurgerCost() {
         Burger burger = new Burger();
-        assertEquals(5.00, burger.getCost(), 0.01);
+        assertEquals(7.00, burger.getCost(), 0.01); // 0.01 is the margin of error
     }
 
     @Test

@@ -1,12 +1,12 @@
 package restaurant.components;
 
 /**
- * Component interface for all food items.
+ * Concreate Component for an item, Burger.
  */
 public class Burger implements FoodItem {
     @Override
     public double getCost() {
-        return 5.00;
+        return 7.00;
     }
 
     @Override
